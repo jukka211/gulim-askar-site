@@ -18,7 +18,6 @@ export const homepageImage = defineType({
       title: 'Links to project',
       type: 'reference',
       to: [{ type: 'project' }],
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'order',

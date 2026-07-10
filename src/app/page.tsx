@@ -17,12 +17,12 @@ export default async function Home() {
   ]);
 
   const tiles: GalleryTile[] = homepageImages
-    .filter((item: { image?: unknown; projectSlug?: string }) => item.image && item.projectSlug)
-    .map((item: { _id: string; image: never; projectSlug: string }) => ({
+    .filter((item: { image?: unknown }) => item.image)
+    .map((item: { _id: string; image: never; projectSlug?: string }) => ({
       id: item._id,
       imageUrl: urlForImage(item.image).width(1000).url(),
       alt: "",
-      href: `/projects/${item.projectSlug}`,
+      href: item.projectSlug ? `/projects/${item.projectSlug}` : undefined,
     }));
 
   return (

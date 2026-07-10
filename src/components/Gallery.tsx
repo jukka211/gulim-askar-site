@@ -8,7 +8,7 @@ export type GalleryTile = {
   id: string;
   imageUrl: string;
   alt: string;
-  href: string;
+  href?: string;
 };
 
 export default function Gallery({ tiles }: { tiles: GalleryTile[] }) {
@@ -90,9 +90,9 @@ export default function Gallery({ tiles }: { tiles: GalleryTile[] }) {
 
   return (
     <div ref={containerRef}>
-      {tiles.map((tile) => (
-        <Link key={tile.id} href={tile.href}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+      {tiles.map((tile) => {
+        const img = (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={tile.imageUrl}
             alt={tile.alt}
@@ -100,8 +100,15 @@ export default function Gallery({ tiles }: { tiles: GalleryTile[] }) {
             data-status="inactive"
             className={styles.image}
           />
-        </Link>
-      ))}
+        );
+        return tile.href ? (
+          <Link key={tile.id} href={tile.href}>
+            {img}
+          </Link>
+        ) : (
+          <div key={tile.id}>{img}</div>
+        );
+      })}
     </div>
   );
 }
