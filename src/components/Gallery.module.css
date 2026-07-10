@@ -1,17 +1,11 @@
 .image {
   width: 50vmin;
-  position: absolute;
-  transform: translate(-50%, -50%) scale(0.5);
-  mix-blend-mode: multiply;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  will-change: transform, opacity;
   touch-action: none;
-}
-
-.image[data-status="inactive"] {
-  display: none;
-}
-
-.image[data-status="active"] {
-  display: block;
 }
 
 @media screen and (min-width: 3700px) {
@@ -29,6 +23,5 @@
 @media (max-width: 768px) {
   .image {
     width: 45vmin;
-    transform: translate(-50%, -50%) scale(0.3);
   }
 }

@@ -5,7 +5,6 @@
   width: 100%;
   z-index: 9999;
   background-color: rgb(255, 255, 255);
-  mix-blend-mode: multiply;
   position: fixed;
   inset: 0;
   height: 90%;
