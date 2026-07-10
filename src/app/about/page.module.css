@@ -1,0 +1,47 @@
+.portrait {
+  display: block;
+  margin: 6vh auto 3vh;
+  max-height: 55vh;
+  width: auto;
+  max-width: 90vw;
+  object-fit: contain;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4vh 4vw;
+  padding: 0 8vw 12vh;
+}
+
+.section {
+  flex: 1;
+  min-width: 240px;
+}
+
+.titleRow {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 0.4em;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.twoColumns {
+  column-count: 2;
+  column-gap: 4vw;
+  line-height: 1.5;
+}
+
+.twoColumns p {
+  margin-bottom: 1em;
+  break-inside: avoid;
+}
+
+@media (max-width: 768px) {
+  .twoColumns {
+    column-count: 1;
+  }
+}

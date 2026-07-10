@@ -1,0 +1,64 @@
+.containerList {
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  font-family: var(--font-beth-ellen);
+  font-size: 2vw;
+  line-height: 2vw;
+  gap: 1.6vh;
+  padding-bottom: 10vh;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.list:hover span {
+  text-decoration: underline;
+}
+
+.thumb {
+  width: 2.5vw;
+  height: 2.5vw;
+  object-fit: cover;
+}
+
+.year {
+  font-size: 0.9vw;
+  line-height: 1vh;
+  font-family: var(--font-pp-mono);
+}
+
+@media (max-width: 768px) {
+  .containerList {
+    margin-top: 13%;
+    align-items: flex-start;
+    font-size: 3vh;
+    line-height: 3.8vh;
+    gap: 3.5vw;
+    padding: 16px;
+  }
+
+  .list {
+    gap: 15px;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .thumb {
+    width: 4.5vh;
+    height: 4.5vh;
+  }
+
+  .year {
+    font-size: 1.6vh;
+    line-height: 2vh;
+  }
+}

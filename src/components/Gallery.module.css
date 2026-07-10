@@ -1,0 +1,34 @@
+.image {
+  width: 50vmin;
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0.5);
+  mix-blend-mode: multiply;
+  touch-action: none;
+}
+
+.image[data-status="inactive"] {
+  display: none;
+}
+
+.image[data-status="active"] {
+  display: block;
+}
+
+@media screen and (min-width: 3700px) {
+  .image {
+    width: 48vmin;
+  }
+}
+
+@media screen and (min-width: 2239px) and (max-width: 3699px) {
+  .image {
+    width: 52vmin;
+  }
+}
+
+@media (max-width: 768px) {
+  .image {
+    width: 45vmin;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+}

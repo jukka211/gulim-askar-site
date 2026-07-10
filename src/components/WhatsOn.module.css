@@ -1,0 +1,39 @@
+.whatson {
+  font-family: var(--font-beth-ellen);
+  font-size: 42px;
+  line-height: 54px;
+  width: 100%;
+  z-index: 9999;
+  background-color: rgb(255, 255, 255);
+  mix-blend-mode: multiply;
+  position: fixed;
+  inset: 0;
+  height: 90%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: center;
+}
+
+.text :global(a:hover) {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+@media (max-width: 768px) {
+  .whatson {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .text {
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+}

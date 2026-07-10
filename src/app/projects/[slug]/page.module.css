@@ -1,0 +1,54 @@
+.gallery {
+  margin-top: 8vh;
+}
+
+.gallery img {
+  display: block;
+  margin: 3% auto;
+  max-height: 78vh;
+  width: auto;
+  max-width: 90vw;
+  object-fit: contain;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  padding: 4vh 8vw 12vh;
+}
+
+.titleRow {
+  display: flex;
+  gap: 0.5em;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.twoColumns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em 4vw;
+}
+
+.text {
+  flex: 1;
+  min-width: 240px;
+  line-height: 1.5;
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+@media (max-width: 640px) {
+  .gallery img {
+    margin: 10% auto;
+    max-height: 70vh;
+    max-width: 95vw;
+  }
+}
