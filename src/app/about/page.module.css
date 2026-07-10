@@ -1,47 +1,161 @@
-.portrait {
-  display: block;
-  margin: 6vh auto 3vh;
-  max-height: 55vh;
-  width: auto;
-  max-width: 90vw;
-  object-fit: contain;
+.top {
+  font-family: var(--font-beth-ellen);
+  font-size: 28px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.container {
+.bottom {
+  font-family: var(--font-beth-ellen);
+  font-size: 28px;
+  position: fixed;
+  bottom: 0;
+  right: 10px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 4vh 4vw;
-  padding: 0 8vw 12vh;
+  justify-content: space-between;
+  width: 25%;
+  z-index: 999;
+}
+
+.top :global(a),
+.bottom :global(a) {
+  text-decoration: none;
+  color: #000000;
+}
+
+.top :global(a):hover,
+.bottom :global(a):hover {
+  font-family: var(--font-test-type-02);
 }
 
 .section {
-  flex: 1;
-  min-width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.section img {
+  height: 100vh;
+  width: auto;
+  display: block;
+}
+
+.container {
+  font-family: var(--font-pp-mono);
+  font-size: 15px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  height: 100vh;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.sec {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
 .titleRow {
   display: flex;
-  gap: 0.5em;
-  margin-bottom: 0.4em;
+  gap: 10px;
 }
 
 .title {
-  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .twoColumns {
-  column-count: 2;
-  column-gap: 4vw;
-  line-height: 1.5;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
-.twoColumns p {
-  margin-bottom: 1em;
-  break-inside: avoid;
+.text {
+  flex: 1;
 }
 
-@media (max-width: 768px) {
-  .twoColumns {
-    column-count: 1;
+.desc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+@media screen and (min-width: 100px) and (max-width: 640px) {
+  .top :global(a),
+  .bottom :global(a) {
+    font-family: var(--font-beth-ellen);
+    font-size: 22px;
+  }
+
+  .container {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    padding-top: 0;
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    gap: 25px;
+  }
+
+  .desc {
+    flex-direction: row;
+    gap: 60px;
+    margin-bottom: 5%;
+  }
+
+  .titleRow {
+    gap: 10px;
+  }
+
+  .top,
+  .bottom {
+    font-family: var(--font-beth-ellen);
+    font-size: 16px;
+    line-height: 16px;
+    position: fixed;
+  }
+
+  .top {
+    top: 10px;
+  }
+
+  .bottom {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .section img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .section {
+    height: auto;
+    overflow: hidden;
   }
 }

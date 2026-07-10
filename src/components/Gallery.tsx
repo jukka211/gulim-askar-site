@@ -12,7 +12,7 @@ export type GalleryTile = {
   href?: string;
 };
 
-// Ported from Codrops' "Image Trail Effects" (demo 1), rewritten from
+// Ported 1:1 from Codrops' "Image Trail Effects" demo 1, rewritten from
 // TweenMax/TimelineMax (GSAP 2) to GSAP 3.
 // https://tympanus.net/codrops/2019/08/07/image-trail-effects/
 export default function Gallery({ tiles }: { tiles: GalleryTile[] }) {
@@ -35,10 +35,12 @@ export default function Gallery({ tiles }: { tiles: GalleryTile[] }) {
     let lastMousePos = { ...mousePos };
     const cacheMousePos = { ...mousePos };
 
-    const images = imageEls.map((el) => ({
-      el,
-      rect: el.getBoundingClientRect(),
-    }));
+    const images = imageEls.map((el) => ({ el }));
+
+    // center each image on its x/y coordinate via CSS transform percentage,
+    // so positioning never depends on a JS-measured width/height (which can
+    // be wrong/zero if read before the image has finished loading)
+    gsap.set(imageEls, { xPercent: -50, yPercent: -50 });
 
     function updateMousePos(x: number, y: number) {
       mousePos = { x, y };
@@ -51,19 +53,12 @@ export default function Gallery({ tiles }: { tiles: GalleryTile[] }) {
         updateMousePos(e.touches[0].clientX, e.touches[0].clientY);
       }
     }
-    function onResize() {
-      for (const img of images) {
-        gsap.set(img.el, { x: 0, y: 0, scale: 1, opacity: 0 });
-        img.rect = img.el.getBoundingClientRect();
-      }
-    }
 
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("touchstart", onTouch);
     window.addEventListener("touchmove", onTouch);
-    window.addEventListener("resize", onResize);
 
-    const threshold = window.innerWidth <= 768 ? 60 : 100;
+    const threshold = window.innerWidth <= 768 ? 120 : 200;
     let imgPosition = 0;
     let zIndexVal = 1;
     let rafId: number;
@@ -74,33 +69,38 @@ export default function Gallery({ tiles }: { tiles: GalleryTile[] }) {
 
     function showNextImage() {
       const img = images[imgPosition];
+
       gsap.killTweensOf(img.el);
 
       gsap
         .timeline()
+        // show the image
         .set(
           img.el,
           {
             opacity: 1,
             scale: 1,
             zIndex: zIndexVal,
-            x: cacheMousePos.x - img.rect.width / 2,
-            y: cacheMousePos.y - img.rect.height / 2,
+            x: cacheMousePos.x,
+            y: cacheMousePos.y,
           },
           0
         )
+        // animate position
         .to(
           img.el,
           {
-            duration: 0.9,
+            duration: 0.8,
             ease: "expo.out",
-            x: mousePos.x - img.rect.width / 2,
-            y: mousePos.y - img.rect.height / 2,
+            x: mousePos.x,
+            y: mousePos.y,
           },
           0
         )
-        .to(img.el, { duration: 1, ease: "power1.out", opacity: 0 }, 0.4)
-        .to(img.el, { duration: 1, ease: "quint.out", scale: 0.2 }, 0.4);
+        // then make it disappear
+        .to(img.el, { duration: 1, ease: "power1.out", opacity: 0 }, 0.9)
+        // scale down the image
+        .to(img.el, { duration: 1, ease: "quint.out", scale: 0 }, 0.9);
     }
 
     function render() {
@@ -134,7 +134,6 @@ export default function Gallery({ tiles }: { tiles: GalleryTile[] }) {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchstart", onTouch);
       window.removeEventListener("touchmove", onTouch);
-      window.removeEventListener("resize", onResize);
       gsap.killTweensOf(imageEls);
     };
   }, []);

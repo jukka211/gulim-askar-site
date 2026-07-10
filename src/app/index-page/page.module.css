@@ -33,7 +33,23 @@
   line-height: 1vh;
   font-family: var(--font-pp-mono);
 }
+.top {
+  font-family: var(--font-beth-ellen);
+  font-size: 28px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.top :global(a) {
+  text-decoration: none;
+  color: #000000;
+}
 @media (max-width: 768px) {
   .containerList {
     margin-top: 13%;
@@ -60,5 +76,9 @@
   .year {
     font-size: 1.6vh;
     line-height: 2vh;
+  }
+
+  .top {
+    font-size: 22px;
   }
 }

@@ -186,17 +186,6 @@ async function migrateAboutAndSettings() {
     aboutPortrait = { _type: "image", asset: { _type: "reference", _ref: assetId } };
   }
 
-  // "what's on" banner from the homepage — dated event listings that are
-  // very likely stale by now; imported as a starting point to edit in Studio.
-  const indexHtmlPath = path.join(SITE_ROOT, "index.html");
-  let whatsOn: unknown[] = [];
-  if (fs.existsSync(indexHtmlPath)) {
-    const indexHtml = fs.readFileSync(indexHtmlPath, "utf-8");
-    const $$ = cheerio.load(indexHtml);
-    const whatsOnHtml = $$(".whatson .text").html() ?? "";
-    whatsOn = textToBlocks(whatsOnHtml);
-  }
-
   const shopUrl = "https://shop.gulimaskar.com";
 
   await client.createOrReplace({
@@ -210,7 +199,6 @@ async function migrateAboutAndSettings() {
     email,
     instagramUrl,
     shopUrl,
-    whatsOn,
   });
 
   console.log(`\nsiteSettings saved (name="${aboutName}")`);

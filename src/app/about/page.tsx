@@ -12,42 +12,35 @@ export default async function AboutPage() {
 
   return (
     <>
-      <div className="top">
-        <div className="gulim">
-          <Link href="/">gulim askar</Link>
-        </div>
+      <div className={styles.top}>
+        <Link href="/">gulim askar</Link>
       </div>
-      <div className="bottom">
-        <div className="about">
-          {settings?.email && <a href={`mailto:${settings.email}`}>e-mail</a>}
-        </div>
-        <div className="center">
-          {settings?.instagramUrl && (
-            <div className="what">
-              <a href={settings.instagramUrl}>instagram</a>
-            </div>
-          )}
-        </div>
-        <div className="index">
-          <Link href="/">back</Link>
-        </div>
+      <div className={styles.bottom}>
+        {settings?.email && <a href={`mailto:${settings.email}`}>e-mail</a>}
+        {settings?.instagramUrl && (
+          <a href={settings.instagramUrl}>instagram</a>
+        )}
       </div>
 
       {settings?.aboutPortrait && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={urlForImage(settings.aboutPortrait).width(1200).url()}
-          alt={`image of ${settings?.aboutName ?? "the artist"}`}
-          className={styles.portrait}
-        />
+        <div className={styles.section}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={urlForImage(settings.aboutPortrait).width(1200).url()}
+            alt={`image of ${settings?.aboutName ?? "the artist"}`}
+          />
+        </div>
       )}
 
       <div className={styles.container}>
-        <div className={styles.section}>
+        <div className={styles.sec}>
           <div className={styles.titleRow}>
             <div className={styles.title}>Name:</div>
             <div>{settings?.aboutName}</div>
           </div>
+        </div>
+
+        <div className={styles.sec}>
           <div className={styles.titleRow}>
             <div className={styles.title}>Origination:</div>
             <div>{settings?.aboutOrigination}</div>
@@ -58,9 +51,15 @@ export default async function AboutPage() {
           </div>
         </div>
 
-        <div className={styles.twoColumns} style={{ flex: 2 }}>
-          {settings?.aboutBio && <PortableText value={settings.aboutBio} />}
-        </div>
+        {settings?.aboutBio && (
+          <div className={styles.sec}>
+            <div className={styles.twoColumns}>
+              <div className={styles.text}>
+                <PortableText value={settings.aboutBio} />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

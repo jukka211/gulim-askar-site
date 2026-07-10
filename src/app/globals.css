@@ -29,7 +29,7 @@ a {
 .top,
 .bottom {
   font-family: var(--font-beth-ellen);
-  font-size: 2.2vh;
+  font-size: 28px;
   position: fixed;
   text-align: center;
   width: 100%;
@@ -41,7 +41,6 @@ a {
 }
 
 .top {
-  top: 14px;
   user-select: none;
 }
 

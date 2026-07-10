@@ -6,7 +6,6 @@ import {
   siteSettingsQuery,
 } from "../../sanity/lib/queries";
 import Gallery, { type GalleryTile } from "@/components/Gallery";
-import WhatsOn from "@/components/WhatsOn";
 
 export const revalidate = 60;
 
@@ -40,7 +39,6 @@ export default async function Home() {
           <Link href="/about">about</Link>
         </div>
         <div className="center">
-          <WhatsOn content={settings?.whatsOn ?? []} />
           {settings?.shopUrl && (
             <div className="shop">
               <a href={settings.shopUrl}>shop originals</a>

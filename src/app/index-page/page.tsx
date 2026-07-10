@@ -2,7 +2,6 @@ import Link from "next/link";
 import { client } from "../../../sanity/lib/client";
 import { urlForImage } from "../../../sanity/lib/image";
 import { projectsListQuery, siteSettingsQuery } from "../../../sanity/lib/queries";
-import WhatsOn from "@/components/WhatsOn";
 import styles from "./page.module.css";
 
 export const revalidate = 60;
@@ -23,10 +22,8 @@ export default async function IndexPage() {
 
   return (
     <>
-      <div className="top">
-        <div className="gulim">
-          <Link href="/">gulim askar</Link>
-        </div>
+      <div className={styles.top}>
+        <Link href="/">gulim askar</Link>
       </div>
 
       <div className={styles.containerList}>
@@ -53,7 +50,6 @@ export default async function IndexPage() {
           <Link href="/about">about me</Link>
         </div>
         <div className="center">
-          <WhatsOn content={settings?.whatsOn ?? []} />
           {settings?.shopUrl && (
             <div className="shop">
               <a href={settings.shopUrl}>shop</a>

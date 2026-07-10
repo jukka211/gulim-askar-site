@@ -1,27 +1,29 @@
 .image {
-  width: 50vmin;
+  width: 42.5vmin;
   position: fixed;
   top: 0;
   left: 0;
   opacity: 0;
   will-change: transform, opacity;
   touch-action: none;
+  background-color: white;
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 3700px) {
   .image {
-    width: 48vmin;
+    width: 40.8vmin;
   }
 }
 
 @media screen and (min-width: 2239px) and (max-width: 3699px) {
   .image {
-    width: 52vmin;
+    width: 44.2vmin;
   }
 }
 
 @media (max-width: 768px) {
   .image {
-    width: 45vmin;
+    width: 38.25vmin;
   }
 }

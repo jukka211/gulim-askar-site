@@ -37,7 +37,6 @@ export const projectSlugsQuery = defineQuery(`
 
 export const siteSettingsQuery = defineQuery(`
   *[_type == "siteSettings"][0] {
-    whatsOn,
     email,
     instagramUrl,
     shopUrl,
